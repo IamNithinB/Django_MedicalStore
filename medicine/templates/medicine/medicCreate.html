@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block extrahead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/medicCreate.css' %}">
+{% endblock extrahead %}
+{% block content %}
+<div class="container">
+    <div class="cform">
+        <div class="">
+            <h1>Add Medicine</h1>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-success sb">Add</button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock content %}

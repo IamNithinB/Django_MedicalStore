@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block extrahead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/medicList.css' %}">
+{% endblock extrahead %}
+{% block content %}
+<div class="container-fluid bg-light p-5">
+    <div class="container">
+        <div class="mb-5 d-flex flex-row-reverse">
+            <a href="{% url 'logout' %}">
+                <button class="btn btn-danger">Logout</button>
+            </a>
+        </div>
+        <div class="">
+            <div class="mb-5 mt-5 d-flex ">
+                <a href="{% url 'addMedic' %}">
+                    <button class="btn btn-primary">ADD MEDICINE</button>
+                </a>
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Expiry_date</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    {% for medicine in medicList %}
+                    <td>{{medicine.name}}</td>
+                    <td>{{medicine.company}}</td>
+                    <td>{{medicine.exp_date}}</td>
+                    <td>
+                        <a href="{% url 'medicview' medicine.id %}">
+                            <Button class="btn btn-warning">View</Button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
